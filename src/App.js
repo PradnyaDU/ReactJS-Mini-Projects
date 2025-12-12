@@ -4,9 +4,12 @@ import Navbar from "./Components/Navbar";
 
 function App() {
   return (
-    <>
-      <Navbar title="To Do List"></Navbar>
-    </>
+    console.log("App rendered"),
+    (
+      <>
+        <Navbar title="My App"></Navbar>
+      </>
+    )
   );
 }
 
