@@ -88,11 +88,3 @@ export default function Navbar({title="set title" , Home="set Home"}) {
     </>
   )
 }
-
-Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
-}
-
-Navbar.defaultProps = {
-  title: "Set title here",
-}
