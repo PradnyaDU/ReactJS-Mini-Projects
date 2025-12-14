@@ -1,27 +1,25 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import About from "./Components/About";
-import { useState } from "react";
 import DismisAlert from "./Components/DismisAlert";
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [alert, setalert] = useState(null);
-  
-  const showAlert = (message, type) => {
-    setalert({
-      msg: message,
-      type: type,
-    });
-  };
-  const [currentPage, setCurrentPage] = useState("home");
+  const [alert, setAlert] = useState(null);
   const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () => {
-    setTheme((t) => (t === "light" ? "dark" : "light"));
+  // Show alert
+  const showAlert = (message, type) => {
+    setAlert({ msg: message, type });
+    setTimeout(() => setAlert(null), 2000);
   };
 
+  // Toggle theme
+  const toggleTheme = () => setTheme((t) => (t === "light" ? "dark" : "light"));
+
+  // Styles
   const appStyle = {
     backgroundColor: theme === "light" ? "#ffffff" : "#121212",
     color: theme === "light" ? "#000000" : "#ffffff",
@@ -51,14 +49,11 @@ function App() {
   };
 
   return (
-    <>
-      <Navbar
-        title="My App"
-        Home="Home"
-        onNavClick={setCurrentPage}
-        theme={theme}
-      />
+    <Router>
+      <Navbar title="My App" theme={theme} />
+
       <div style={appStyle}>
+        {/* Theme Switch */}
         <div className="container d-flex justify-content-end mb-3">
           <div className="form-check form-switch">
             <input
@@ -74,17 +69,24 @@ function App() {
           </div>
         </div>
 
-        <div className="container">
-          {currentPage === "home" && (
-            <TextForm theme={theme} themeStyles={themeStyles} showAlert={showAlert}/>
-          )}
-          {currentPage === "about" && (
-            <About theme={theme} themeStyles={themeStyles} />
-          )}
+        {/* Alert */}
+        <DismisAlert alert={alert} />
+
+        {/* Pages */}
+        <div className="container my-3">
+          <Routes>
+            <Route
+              path="/"
+              element={<TextForm themeStyles={themeStyles} showAlert={showAlert} />}
+            />
+            <Route
+              path="/about"
+              element={<About themeStyles={themeStyles} />}
+            />
+          </Routes>
         </div>
-        <DismisAlert alert={alert}> </DismisAlert>
       </div>
-    </>
+    </Router>
   );
 }
 

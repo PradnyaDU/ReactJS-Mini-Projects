@@ -1,96 +1,36 @@
 import React from "react";
 
-export default function About({ theme = "light", themeStyles = {} }) {
+export default function About({ themeStyles = {} }) {
   const { accordionStyle = {}, accordionButtonStyle = {}, accordionBodyStyle = {} } = themeStyles;
 
   return (
-    <>
-      <div>
-        <div className="accordion accordion-flush" id="accordionFlushExample">
-          <div className="accordion-item" style={accordionStyle}>
-            <h2 className="accordion-header">
-              <button
-                className="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseOne"
-                aria-expanded="false"
-                aria-controls="flush-collapseOne"
-                style={accordionButtonStyle}
-              >
-                Accordion Item #1
-              </button>
-            </h2>
-            <div
-              id="flush-collapseOne"
-              className="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
+    <div className="accordion accordion-flush" id="accordionFlushExample">
+      {[1, 2, 3].map((i) => (
+        <div className="accordion-item" style={accordionStyle} key={i}>
+          <h2 className="accordion-header">
+            <button
+              className="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target={`#flush-collapse${i}`}
+              aria-expanded="false"
+              aria-controls={`flush-collapse${i}`}
+              style={accordionButtonStyle}
             >
-              <div className="accordion-body" style={accordionBodyStyle}>
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> className. This is
-                the first item's accordion body.
-              </div>
-            </div>
-          </div>
-          <div className="accordion-item" style={accordionStyle}>
-            <h2 className="accordion-header">
-              <button
-                className="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseTwo"
-                aria-expanded="false"
-                aria-controls="#flush-collapseTwo"
-                style={accordionButtonStyle}
-              >
-                Accordion Item #2
-              </button>
-            </h2>
-            <div
-              id="flush-collapseTwo"
-              className="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
-            >
-              <div className="accordion-body" style={accordionBodyStyle}>
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> className. This is
-                the second item's accordion body. Let's imagine this being
-                filled with some actual content.
-              </div>
-            </div>
-          </div>
-          <div className="accordion-item" style={accordionStyle}>
-            <h2 className="accordion-header">
-              <button
-                className="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseThree"
-                aria-expanded="false"
-                aria-controls="#flush-collapseThree"
-                style={accordionButtonStyle}
-              >
-                Accordion Item #3
-              </button>
-            </h2>
-            <div
-              id="flush-collapseThree"
-              className="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
-            >
-              <div className="accordion-body" style={accordionBodyStyle}>
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> className. This is
-                the third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
-              </div>
+              Accordion Item #{i}
+            </button>
+          </h2>
+          <div
+            id={`flush-collapse${i}`}
+            className="accordion-collapse collapse"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div className="accordion-body" style={accordionBodyStyle}>
+              Placeholder content for accordion item #{i}. This content changes based on the theme.
             </div>
           </div>
         </div>
-      </div>
-    </>
+      ))}
+    </div>
   );
 }
