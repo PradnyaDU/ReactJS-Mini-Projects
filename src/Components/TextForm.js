@@ -1,24 +1,30 @@
 import {useState} from 'react'
+import App from '../App';
 
-export default function TextForm({ theme = 'light', themeStyles = {} }) {
+export default function TextForm({
+  theme = "light",
+  themeStyles = {},
+  showAlert,
+}) {
   const [text, settext] = useState("This is default text");
   function onbtnclick() {
     let newText = text.toUpperCase();
     settext(newText);
   }
-    function onbtnclicklow() {
-      let newText = text.toLowerCase();
-      settext(newText);
-    }
-function onChangeFunc(event) {
+  function onbtnclicklow() {
+    let newText = text.toLowerCase();
+    settext(newText);
+  }
+  function onChangeFunc(event) {
     settext(event.target.value);
-}
-function onbtnclicktxtclr() {
+  }
+  function onbtnclicktxtclr() {
     const ta = document.getElementById("exampleFormControlTextarea1");
     if (ta) {
-        ta.style.color = ta.style.color === "red" ? "black" : "red";
+      ta.style.color = ta.style.color === "red" ? "black" : "red";
     }
-}
+    showAlert("Text color changed", "warning");
+  }
   function getWordAndCharCount() {
     const charCount = text.length;
     const wordCount = text
@@ -48,7 +54,7 @@ function onbtnclicktxtclr() {
         <button className="btn btn-primary" onClick={onbtnclicklow}>
           Click to lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={onbtnclicktxtclr} >
+        <button className="btn btn-primary mx-2" onClick={onbtnclicktxtclr}>
           Click to change color of text
         </button>
 

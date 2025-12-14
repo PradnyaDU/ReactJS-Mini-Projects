@@ -4,8 +4,17 @@ import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import About from "./Components/About";
 import { useState } from "react";
+import DismisAlert from "./Components/DismisAlert";
 
 function App() {
+  const [alert, setalert] = useState(null);
+  
+  const showAlert = (message, type) => {
+    setalert({
+      msg: message,
+      type: type,
+    });
+  };
   const [currentPage, setCurrentPage] = useState("home");
   const [theme, setTheme] = useState("light");
 
@@ -43,7 +52,12 @@ function App() {
 
   return (
     <>
-      <Navbar title="My App" Home="Home" onNavClick={setCurrentPage} theme={theme} />
+      <Navbar
+        title="My App"
+        Home="Home"
+        onNavClick={setCurrentPage}
+        theme={theme}
+      />
       <div style={appStyle}>
         <div className="container d-flex justify-content-end mb-3">
           <div className="form-check form-switch">
@@ -61,9 +75,14 @@ function App() {
         </div>
 
         <div className="container">
-          {currentPage === "home" && <TextForm theme={theme} themeStyles={themeStyles} />}
-          {currentPage === "about" && <About theme={theme} themeStyles={themeStyles} />}
+          {currentPage === "home" && (
+            <TextForm theme={theme} themeStyles={themeStyles} showAlert={showAlert}/>
+          )}
+          {currentPage === "about" && (
+            <About theme={theme} themeStyles={themeStyles} />
+          )}
         </div>
+        <DismisAlert alert={alert}> </DismisAlert>
       </div>
     </>
   );
