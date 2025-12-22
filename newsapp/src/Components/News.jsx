@@ -2,6 +2,299 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 
 export class News extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      articles: [
+        {
+          source: {
+            id: "the-washington-post",
+            name: "The Washington Post",
+          },
+          author: "Karen DeYoung",
+          title:
+            "Trump faces narrowing options on Venezuela action - The Washington Post",
+          description:
+            "The Trump administration has backed itself into a corner on Venezuela, with President Nicolás Maduro’s removal by force or war the only compelling options.",
+          url: "https://www.washingtonpost.com/national-security/2025/12/21/trump-venezuela-boat-strikes-oil-maduro/",
+          urlToImage:
+            "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/ZWBFAECMWNBVP7E6ZZHLRK24M4_size-normalized.jpg&w=1440",
+          publishedAt: "2025-12-21T13:03:45Z",
+          content:
+            "The day after President Donald Trump declared he had ended 94 percent of all seaborne drug trafficking to the United States and reduced illegal migrant border crossings to zero, he announced an entir… [+89 chars]",
+        },
+        {
+          source: {
+            id: null,
+            name: "The Cincinnati Enquirer",
+          },
+          author: "Bebe Hodges",
+          title:
+            "Powerball numbers for Saturday, Dec. 20. Did anyone win $1.43B jackpot? - Cincinnati Enquirer",
+          description:
+            "Did anyone win Saturday night's Powerball drawing for the jackpot of $1.43 billion, the fifth-largest ever?",
+          url: "https://www.cincinnati.com/story/news/2025/12/21/did-anyone-win-powerball-last-night-december-20-lottery-results-winning-numbers-1-43-billion-jackpot/87849195007/",
+          urlToImage:
+            "https://www.cincinnati.com/gcdn/authoring/authoring-images/2025/12/12/USAT/87739711007-usatsi-27774390.jpg?crop=3949,2221,x0,y18&width=3200&height=1800&format=pjpg&auto=webp",
+          publishedAt: "2025-12-21T12:35:00Z",
+          content:
+            "\u003Cul\u003E\u003Cli\u003ENo one won the $1.43 billion Powerball jackpot in the Dec. 20 drawing.\u003C/li\u003E\u003Cli\u003EThe winning numbers were 4, 5, 28, 52, and 69, with a red Powerball of 20.\u003C/li\u003E\u003Cli\u003EEight tickets sold across sev… [+3343 chars]",
+        },
+        {
+          source: {
+            id: "al-jazeera-english",
+            name: "Al Jazeera English",
+          },
+          author: "Al Jazeera",
+          title:
+            "Manhunt under way after gunmen kill nine near South Africa’s Johannesburg - Al Jazeera",
+          description:
+            "Motive unknown after about a dozen gunmen in minibus and car target tavern in Bekkersdal township, police say.",
+          url: "https://www.aljazeera.com/news/2025/12/21/at-least-nine-people-killed-in-mass-shooting-in-south-africa",
+          urlToImage:
+            "https://www.aljazeera.com/wp-content/uploads/2025/12/2025-04-16T122540Z_868222595_RC2ZYDADI99M_RTRMADP_3_SAFRICA-CRIME-1766295398.jpg?resize=1920%2C1440",
+          publishedAt: "2025-12-21T11:15:00Z",
+          content:
+            "At least nine people have been killed and 10 wounded when armed men opened fire at a tavern in a township near the city of Johannesburg in South Africa, police said, adding that some victims were ran… [+2693 chars]",
+        },
+        {
+          source: {
+            id: null,
+            name: "Live Science",
+          },
+          author: "Jamie Carter",
+          title:
+            "Glittering new James Webb telescope image shows an 'intricate web of chaos' — Space photo of the week - Live Science",
+          description:
+            "This mash-up of data from the James Webb Space Telescope and the Chandra X-ray Observatory reveals two galaxies mid-collision, with their spiral arms overlapping and bending toward their neighbors' cores.",
+          url: "https://www.livescience.com/space/glittering-new-james-webb-telescope-image-shows-an-intricate-web-of-chaos-space-photo-of-the-week",
+          urlToImage:
+            "https://cdn.mos.cms.futurecdn.net/TuCf6MaNkRwn44tWzBL7YW-1600-80.png",
+          publishedAt: "2025-12-21T11:00:00Z",
+          content:
+            "Webb and Chandra spot a cosmic car crash (Image credit: Credit: X-ray: NASA/CXC/SAO; Infrared: NASA/ESA/CSA/STScI/Webb; Image Processing: NASA/CXC/SAO/L. Frattare)\r\nWhat it is: The spiral galaxies NG… [+2514 chars]",
+        },
+        {
+          source: {
+            id: "mashable",
+            name: "Mashable",
+          },
+          author: "Mashable Team",
+          title:
+            "NYT Connections Sports Edition today: Hints and answers for December 21, 2025 - Mashable",
+          description:
+            "Everything you need to solve Connections Sports Edition #454",
+          url: "https://mashable.com/article/nyt-connections-sports-edition-hint-answer-today-december-21-2025",
+          urlToImage:
+            "https://helios-i.mashable.com/imagery/articles/04xCuL96xf2Fx4f5fh4xoro/hero-image.fill.size_1200x675.v1766313791.jpg",
+          publishedAt: "2025-12-21T10:47:59Z",
+          content: null,
+        },
+        {
+          source: {
+            id: null,
+            name: "NPR",
+          },
+          author: "Barbara Sprunt",
+          title:
+            "‘Congress is in a coma.’ Former lawmakers sound alarm on health of the House - NPR",
+          description:
+            "Congress is wrapping up the year without a lot of legislative accomplishments under its belt and a growing list of lawmakers who are retiring. Former members say the challenges on Capitol Hill have been brewing for a long time.",
+          url: "https://www.npr.org/2025/12/21/g-s1-101741/congress-is-in-a-coma-former-lawmakers-sound-alarm-on-health-of-the-house",
+          urlToImage:
+            "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/2990x1680+305+172/resize/1400/quality/100/format/png/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F85%2F3d%2F3834e5c8466b808355476b6e6dce%2Fillustration-congress-03.png",
+          publishedAt: "2025-12-21T10:00:00Z",
+          content:
+            'Congress is wrapping up the year in the shadow of the longest government shutdown and with a growing reputation as the least productive in modern history.\r\n"Congress is in a coma. It has a pulse, but… [+13074 chars]',
+        },
+        {
+          source: {
+            id: null,
+            name: "Financial Times",
+          },
+          author: "Guy Chazan",
+          title:
+            "How Bill Clinton became the focus of the Epstein files - Financial Times",
+          description:
+            "Tranche of documents released by DoJ shifted the spotlight on to the former president",
+          url: "https://www.ft.com/content/a01cb8d4-2bc0-403a-9ccd-9246949dff2e",
+          urlToImage:
+            "https://images.ft.com/v3/image/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2Fa68a095f-1eaa-480d-b70a-0a54eb160726.jpg?source=next-barrier-page",
+          publishedAt: "2025-12-21T09:30:48Z",
+          content:
+            "White House Watch newsletter\r\nSign up for your free, indispensable guide to what Trumps second term means for Washington, business and the world.",
+        },
+        {
+          source: {
+            id: "abc-news",
+            name: "ABC News",
+          },
+          author: "The Associated Press",
+          title:
+            "Russia says talks on US peace plan for Ukraine 'are proceeding constructively' - ABC News",
+          description:
+            "A Kremlin envoy says peace talks on a U.S.-proposed plan to end the nearly four-year war in Ukraine are proceeding constructively in Florida",
+          url: "https://abcnews.go.com/International/wireStory/russia-talks-us-peace-plan-ukraine-proceeding-constructively-128593595",
+          urlToImage:
+            "https://i.abcnewsfe.com/a/e584bb76-480b-487a-bb39-8f3c9375af8a/wirestory_1ad3b82d8a2b5c449968d8c62e818a04_16x9.jpg?w=1600",
+          publishedAt: "2025-12-21T08:49:02Z",
+          content:
+            'A Kremlin envoy says peace talks on a U.S.-proposed plan to end the nearly four-year war in Ukraine were pressing on "constructively in Florida.\r\nThe talks are part of the Trump administrations month… [+1576 chars]',
+        },
+        {
+          source: {
+            id: null,
+            name: "KABC-TV",
+          },
+          author: "Tim Pulliam, Elena Gomez",
+          title:
+            "Holiday travel rush ramps up, causes delays on Southern California freeways - ABC7 Los Angeles",
+          description:
+            "Eyewitness News spoke to one family who missed their flight to Hawaii on Saturday after getting stuck on the 405 Freeway for hours.",
+          url: "https://abc7.com/post/holiday-travel-rush-expected-ramp-socal-airports-local-freeways-saturday/18303169/",
+          urlToImage:
+            "https://cdn.abcotvs.com/dip/images/18304056_122025-kabc-holiday-travel-tn-img.jpg?w=1600",
+          publishedAt: "2025-12-21T08:15:00Z",
+          content:
+            "LOS ANGELES (KABC) -- If you're one of the 120 million Americans expected to travel this week, you'll want to keep close tabs on the incoming storm. It's just one more thing that could throw a wrench… [+1929 chars]",
+        },
+        {
+          source: {
+            id: "cnn",
+            name: "CNN",
+          },
+          author: "Dan Heching",
+          title:
+            "Bowen Yang tearfully bids farewell to ‘Saturday Night Live’ with the help of Cher and Ariana Grande - CNN",
+          description:
+            "Bowen Yang got teary-eyed during the final sketch on Saturday’s episode of “Saturday Night Live,” which was his last.",
+          url: "https://www.cnn.com/2025/12/21/entertainment/bowen-yang-farewell-saturday-night-live",
+          urlToImage:
+            "https://media.cnn.com/api/v1/images/stellar/prod/still-22217558-5393307-793-still.jpg?c=16x9&q=w_800,c_fill",
+          publishedAt: "2025-12-21T06:43:22Z",
+          content:
+            "Bowen Yang got teary-eyed during the final sketch on Saturdays episode of Saturday Night Live, which was his last.\r\nThe 5-time Primetime Emmy nominee who confirmed via his social media earlier on Sat… [+1473 chars]",
+        },
+        {
+          source: {
+            id: "associated-press",
+            name: "Associated Press",
+          },
+          author: "Jonathan J. Cooper, Sejal Govindarao",
+          title:
+            "Here’s what you missed at Turning Point’s chaotic convention - AP News",
+          description:
+            "Turning Point USA's AmericaFest convention has been marked by internal feuds among conservative figures. Erika Kirk, leading the organization since her husband Charlie's assassination, likened the event to a family dinner with heated discussions. Key conserva…",
+          url: "https://apnews.com/article/turning-point-convention-charlie-erika-kirk-f5e506321669034433ff1dac411ec2e3",
+          urlToImage:
+            "https://dims.apnews.com/dims4/default/86e9446/2147483647/strip/true/crop/5391x3032+0+281/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F63%2F85%2F4c0ccd459fb73c298067087f526b%2Fd454554d062f46ab922e5618d2a5fd3c",
+          publishedAt: "2025-12-21T06:27:00Z",
+          content:
+            "PHOENIX (AP) When Turning Point USAs annual AmericaFest convention reached its halfway point, Erika Kirk tried to put a smiling face on things. \r\nSay what you want about AmFest, but its definitely no… [+4773 chars]",
+        },
+        {
+          source: {
+            id: "associated-press",
+            name: "Associated Press",
+          },
+          author: "Andrew Seligman",
+          title:
+            "Bears stun Packers 22-16 with improbable rally as Williams finds Moore for winning score in OT - AP News",
+          description:
+            "Caleb Williams threw a 46-yard touchdown pass to DJ Moore in overtime, and the Chicago Bears overcame a 10-point deficit late in the fourth quarter for a 22-16 win over the Green Bay Packers. Green Bay lost quarterback Jordan Love to a concussion. The Bears e…",
+          url: "https://apnews.com/article/packers-bears-score-cb17d752329179da4875ff7e17e8484e",
+          urlToImage:
+            "https://dims.apnews.com/dims4/default/c765262/2147483647/strip/true/crop/7516x4228+0+391/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F8f%2Fd0%2F96ec5e8c28251980f4c5d4c03e3a%2Fc52e45298945495fad506ddcc8b2aa20",
+          publishedAt: "2025-12-21T06:26:00Z",
+          content:
+            "CHICAGO (AP) Caleb Williams felt it as soon as the ball left his hand. Then, in a flash, the Bears were celebrating yet another wild win.\r\nWilliams threw a 46-yard touchdown pass to DJ Moore in overt… [+4287 chars]",
+        },
+        {
+          source: {
+            id: null,
+            name: "Collegefootballplayoff.com",
+          },
+          author: "College Football Playoff",
+          title:
+            "No. 5 Oregon Hands 51-34 Loss to No. 12 JMU and Advance to Playoff Quarterfinals - College Football Playoff",
+          description: "",
+          url: "https://collegefootballplayoff.com/news/2025/12/20/R1-JMU-ORE-recap.aspx",
+          urlToImage:
+            "https://images.sidearmdev.com/fit?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fcollegefootballplayoff.sidearmsports.com%2fimages%2f2025%2f12%2f20%2fSIC08691.JPG&height=450&width=800&type=jpeg",
+          publishedAt: "2025-12-21T05:10:16Z",
+          content:
+            "Story Links\r\nEUGENE, Ore. (AP) Dante Moore threw four touchdown passes and ran for another score and No. 5 Oregon beat No. 19 James Madison 51-34 on Saturday night in a College Football Playoff opene… [+1660 chars]",
+        },
+        {
+          source: {
+            id: null,
+            name: "mlive.com",
+          },
+          author: "Benjamin Raven | braven@mlive.com",
+          title:
+            "How the Bears’ crazy win over Packers affects Detroit Lions’ playoff hopes - MLive.com",
+          description:
+            "Thanks to the overtime heroics of the Bears to come back and beat the Packers on Saturday night, the Detroit Lions do not control their own playoff destiny.",
+          url: "https://www.mlive.com/lions/2025/12/how-the-chicago-bears-win-over-packers-affects-detroit-lions-playoff-hopes.html",
+          urlToImage:
+            "https://www.mlive.com/resizer/v2/ZXQC42NMJNFV3KGPBUCUAW3RII.JPG?auth=7cbbba057afda1749afc7d6531801851d47d381e39b1cd0176e5c501ca5e9a61&width=1280&smart=true&quality=90",
+          publishedAt: "2025-12-21T04:42:00Z",
+          content:
+            "ALLEN PARK Thanks to the heroics of the Chicago Bears to come back and beat the Green Bay Packers on Saturday night, the Detroit Lions do not control their own playoff destiny.\r\nChicago scored 10 poi… [+3370 chars]",
+        },
+        {
+          source: {
+            id: null,
+            name: "DW (English)",
+          },
+          author: "Saim Dušan Inayatullah",
+          title:
+            "German engineer becomes first wheelchair user to visit space - DW",
+          description:
+            "German engineer Michaela Benthaus, who has paraplegia, traveled to space with Jeff Bezos' company Blue Origin.",
+          url: "https://www.dw.com/en/german-engineer-becomes-first-person-with-wheelchair-to-visit-space/a-75254342",
+          urlToImage: "https://static.dw.com/image/75253885_6.jpg",
+          publishedAt: "2025-12-21T02:58:34Z",
+          content:
+            "German engineer Michaela Benthaus on Saturday became the first person with paraplegia to travel to space.\r\nThe brief suborbital trip was carried out by US billionaire Jeff Bezos' space tourism compan… [+1584 chars]",
+        },
+        {
+          source: {
+            id: null,
+            name: "BBC News",
+          },
+          author: null,
+          title:
+            "Weight loss jabs: What happens when you stop taking them? - BBC",
+          description:
+            "You may have lost the weight you wanted to lose - but now you've stopped the jabs, how easy is it to keep it off?",
+          url: "https://www.bbc.com/news/articles/cn98pdpyjz5o",
+          urlToImage:
+            "https://ichef.bbci.co.uk/news/1024/branded_news/2583/live/26e92bd0-dcfc-11f0-a8dc-93c15fe68710.jpg",
+          publishedAt: "2025-12-21T01:01:53Z",
+          content:
+            "Ellen and Tanya have both lost weight using GLP-1s but have had very different experiences when it comes to stopping the medication\r\nRuth Clegg,Health and wellbeing reporterand\r\n\"It's like a switch t… [+7199 chars]",
+        },
+        {
+          source: {
+            id: null,
+            name: "Spaceflight Now",
+          },
+          author: null,
+          title:
+            "Astronauts, launch teams practice Artemis 2 countdown - Spaceflight Now",
+          description: null,
+          url: "https://spaceflightnow.com/2025/12/21/astronauts-launch-teams-practice-artemis-2-countdown/",
+          urlToImage: null,
+          publishedAt: "2025-12-21T00:17:50Z",
+          content:
+            "The four crew members of the Artemis 2 mission exit the Neil Armstrong Operations and Checkout Building during the Countdown Demonstration Test, a launch day rehearsal for the Artemis 2 mission. Imag… [+4541 chars]",
+        },
+      ],
+      //loading: false,
+    };
+  }
   render() {
     return (
       <div className="container my-4">
@@ -9,45 +302,20 @@ export class News extends Component {
 
         {/* ROW */}
         <div className="row">
-          <NewsItem
-            title="Sample Title"
-            description="Sample Description"
-            author="Sample Author"
-            date="2025-12-22"
-            source="Sample Source"
-          />
-
-          <NewsItem
-            title="Sample Title 2"
-            description="Sample Description 2"
-            author="Sample Author 2"
-            date="2025-12-23"
-            source="Sample Source 2"
-          />
-
-          <NewsItem
-            title="Sample Title 3"
-            description="Sample Description 3"
-            author="Sample Author 3"
-            date="2025-12-24"
-            source="Sample Source 3"
-          />
-
-          <NewsItem
-            title="Sample Title 4"
-            description="Sample Description 4"
-            author="Sample Author 4"
-            date="2025-12-25"
-            source="Sample Source 4"
-          />
-
-          <NewsItem
-            title="Sample Title 5"
-            description="Sample Description 5"
-            author="Sample Author 5"
-            date="2025-12-26"
-            source="Sample Source 5"
-          />
+          {this.state.articles.map((article) => {
+            return (
+              <NewsItem
+                key={article.url}
+                title={article.title}
+                description={article.description}
+                author={article.author}
+                date={article.publishedAt}
+                source={article.source.name}
+                newsUrl={article.url}
+                urlToImage={article.urlToImage}
+              />
+            );
+          })}
         </div>
       </div>
     );
