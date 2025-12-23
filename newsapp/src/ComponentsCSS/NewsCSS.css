@@ -1,22 +1,22 @@
-.news-container {
+/* .news-container {
   height: 80vh;
   overflow: hidden;
   position: relative;
 }
 
 /* Animate the row that contains all NewsItem cards */
-.news-container .row {
+/* .news-container .row {
   /* animation: scrollUp 180s linear infinite; */
-}
+ /* } */
 
-.news-container:hover .row {
+/* .news-container:hover .row {
   animation-play-state: paused;
-}
-@keyframes scrollUp {
+} */
+/* @keyframes scrollUp {
   0% {
     transform: translateY(0);
   }
   100% {
     transform: translateY(-50%);
   }
-}
+} */
