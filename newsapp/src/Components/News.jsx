@@ -15,64 +15,71 @@ export class News extends Component {
       showSpinner: true,
       loading: true,
     };
+
   }
 
-  async componentDidMount() {
-    // API call can be made here if needed
-    let url =
-       "https://newsapi.org/v2/top-headlines?category=" +
-      this.props.category +
-      "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
-      this.state.page +
-      "&pageSize=" +
-      this.state.pageSize;
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    this.setState({ articles: data.articles, totalResults: data.totalResults });
-  }
-
-  handleOnPreviousClick = async () => {
-    // Handle previous button click
-    console.log("this is previous");
-
+  updateNews = async (page = this.state.page) => {
     let url =
       "https://newsapi.org/v2/top-headlines?category=" +
       this.props.category +
       "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
-      (this.state.page - 1) +
+      page +
       "&pageSize=" +
       this.state.pageSize;
-    this.setState({ loading: true, showSpinner: true });
-
     const response = await fetch(url);
     const data = await response.json();
     this.setState({
       articles: data.articles,
-      page: this.state.page - 1,
+      totalResults: data.totalResults,
       loading: false,
+      showSpinner: false,
     });
+        document.title =
+      "NewsHub - " +
+      this.props.category.charAt(0).toUpperCase() +
+      this.props.category.slice(1);
+  };
+
+  async componentDidMount() {
+    this.updateNews();
+  }
+
+  handleOnPreviousClick = async () => {
+    // Handle previous button click
+    // console.log("this is previous");
+
+    // let url =
+    //   "https://newsapi.org/v2/top-headlines?category=" +
+    //   this.props.category +
+    //   "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
+    //   (this.state.page - 1) +
+    //   "&pageSize=" +
+    //   this.state.pageSize;
+    // this.setState({ loading: true, showSpinner: true });
+
+    // const response = await fetch(url);
+    // const data = await response.json();
+
+    const prevPage = this.state.page - 1;
+    this.setState({ page: prevPage }, () => this.updateNews(prevPage));
   };
 
   handleOnNextClick = async () => {
     console.log("this is next");
 
-    let url =
-      "https://newsapi.org/v2/top-headlines?category=" +
-      this.props.category +
-      "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
-      (this.state.page + 1) +
-      "&pageSize=" +
-      this.state.pageSize;
-    this.setState({ loading: true, showSpinner: true });
-    const response = await fetch(url);
-    const data = await response.json();
+    // let url =
+    //   "https://newsapi.org/v2/top-headlines?category=" +
+    //   this.props.category +
+    //   "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
+    //   (this.state.page + 1) +
+    //   "&pageSize=" +
+    //   this.state.pageSize;
+    // this.setState({ loading: true, showSpinner: true });
+    // const response = await fetch(url);
+    // const data = await response.json();
 
-    this.setState({
-      articles: data.articles || [],
-      page: this.state.page + 1,
-      loading: false,
-    });
+    const nextPage = this.state.page + 1;
+    this.setState({ page: nextPage }, () => this.updateNews(nextPage));
   };
 
   render() {
@@ -81,7 +88,7 @@ export class News extends Component {
         {this.state.loading}
         <div className="container my-4 news-container">
           <div className="text-center mb-4 news-list">
-            <h2>Latest News</h2>
+            <h2>Top Headline - {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)}</h2>
           </div>
 
           {/* ROW */}
