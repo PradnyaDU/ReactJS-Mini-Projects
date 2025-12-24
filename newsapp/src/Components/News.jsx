@@ -22,7 +22,7 @@ export class News extends Component {
     let url =
       "https://newsapi.org/v2/top-headlines?category=" +
       this.props.category +
-      "&country=us&apiKey=235100dc7f4c4500ba8cbeb83d5d984e&page=" +
+      "&country=us&apiKey=ab5e46e9672f4ab88efed99d045de85f&page=" +
       page +
       "&pageSize=" +
       this.state.pageSize;
