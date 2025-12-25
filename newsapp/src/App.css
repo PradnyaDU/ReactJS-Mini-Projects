@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+.loading-container {
+  position: relative;
+}
+
+.loading-dot {
+  position: absolute;
+  top: -4px;               /* aligns dot with bar */
+  width: 10px;
+  height: 10px;
+  background-color: #f97316;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: left 0.2s ease-out;
+}

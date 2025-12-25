@@ -15,10 +15,10 @@ export class News extends Component {
       showSpinner: true,
       loading: true,
     };
-
   }
 
   updateNews = async (page = this.state.page) => {
+    this.props.setProgress(0);
     let url =
       "https://newsapi.org/v2/top-headlines?category=" +
       this.props.category +
@@ -27,14 +27,19 @@ export class News extends Component {
       "&pageSize=" +
       this.state.pageSize;
     const response = await fetch(url);
+    this.props.setProgress(30);
+
     const data = await response.json();
+    this.props.setProgress(60);
+
     this.setState({
       articles: data.articles,
       totalResults: data.totalResults,
       loading: false,
       showSpinner: false,
     });
-        document.title =
+    this.props.setProgress(100);
+    document.title =
       "NewsHub - " +
       this.props.category.charAt(0).toUpperCase() +
       this.props.category.slice(1);
@@ -88,7 +93,11 @@ export class News extends Component {
         {this.state.loading}
         <div className="container my-4 news-container">
           <div className="text-center mb-4 news-list">
-            <h2>Top Headline - {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)}</h2>
+            <h2>
+              Top Headline -{" "}
+              {this.props.category.charAt(0).toUpperCase() +
+                this.props.category.slice(1)}
+            </h2>
           </div>
 
           {/* ROW */}
