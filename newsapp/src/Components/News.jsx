@@ -5,7 +5,7 @@ import Spinner from "./Spinner";
 
 export class News extends Component {
   articles = [];
-
+  APIKey = process.env.REACT_APP_MY_NEWS_API_KEY;
   constructor() {
     super();
     this.state = {
@@ -22,7 +22,9 @@ export class News extends Component {
     let url =
       "https://newsapi.org/v2/top-headlines?category=" +
       this.props.category +
-      "&country=us&apiKey=ab5e46e9672f4ab88efed99d045de85f&page=" +
+      "&country=us&apiKey=" +
+      this.APIKey +
+      "&page=" +
       page +
       "&pageSize=" +
       this.state.pageSize;
