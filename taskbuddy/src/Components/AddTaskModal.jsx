@@ -11,6 +11,10 @@ export const AddTaskModal = ({task, show, onClose, onAdd ,onSave}) => {
     setTaskName("");
   };
 
+  const handleReset=()=>
+  {
+    setTaskName("");
+  }
   return (
     <Modal
       show={show}
@@ -60,6 +64,12 @@ export const AddTaskModal = ({task, show, onClose, onAdd ,onSave}) => {
           onClick={() => onSave(taskName)}
         >
           {task ? "Save Changes" : "Add Task"}
+        </Button>
+         <Button
+         className="danger"
+          onClick={() => handleReset()}
+        >
+          Reset
         </Button>
       </Modal.Footer>
     </Modal>
