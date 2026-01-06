@@ -1,12 +1,12 @@
 
 
 
-export const TaskCard = ({ task, deleteTask, markAsCompleted, handleEditTask }) => {
+export const TaskCard = ({ task, deleteTask, markAsCompleted, handleEditTask,info }) => {
   return (
     <>
       <div className="task-item" key={task.id}>
         <span className={task.completed ? "completed-task" : ""}>
-          {task.Name}
+          {task.Name} {info}
         </span>
 
         <div className="task-actions">

@@ -2,11 +2,12 @@
 import { TaskList } from './Components/TaskList';
 
 function App() {
+  const info="Pradnya"
   return (
    <>
    <div className="Text-Center">
     
-    <TaskList />
+    <TaskList info={info}/>
    </div>
    </>
   );

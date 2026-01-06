@@ -4,7 +4,7 @@ import { TaskCard } from "./TaskCard";
 import { AddTaskModal } from "./AddTaskModal";
 import { EditTaskModal } from "./EditTaskModal";
 
-export const TaskList = () => {
+export const TaskList = ({info}) => {
   const [tasks, settasks] = useState([
     { Name: "Sample Task 1", id: 1, completed: false },
     { Name: "Sample Task 2", id: 2, completed: false },
@@ -72,6 +72,7 @@ export const TaskList = () => {
             markAsCompleted={markAsCompleted}
             deleteTask={deleteTask}
             handleEditTask={() => handleEditTask(task)}
+            info={info}
           />
         ))}
 
